@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posesiones', function (Blueprint $table) {
             $table->foreignId('videojuego_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->unique(['videojuego_id', 'user_id']);
+            $table->primary(['videojuego_id', 'user_id']);
         });
     }
 

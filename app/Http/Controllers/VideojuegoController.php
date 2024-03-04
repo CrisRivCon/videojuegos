@@ -26,7 +26,7 @@ class VideojuegoController extends Controller
 
         $videojuegos = Videojuego::with(['desarrolladora'])
                                 ->selectRaw('videojuegos.*, desarrolladoras.nombre as desarrolladora, distribuidoras.nombre as distribuidora')
-                                ->leftJoin('posesiones', 'posesiones.user_id', '=', 'videojuegos.id')
+                                ->leftJoin('posesiones', 'posesiones.videojuego_id', '=', 'videojuegos.id')
                                 ->leftJoin('desarrolladoras', 'videojuegos.desarrolladora_id', '=', 'desarrolladoras.id')
                                 ->leftJoin('distribuidoras', 'desarrolladoras.distribuidora_id', '=', 'distribuidoras.id')
                                 ->where('posesiones.user_id', '=', $request->user()->id)
